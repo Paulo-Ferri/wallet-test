@@ -23,12 +23,10 @@ const Register = () => {
       return setIsPasswordValid(false);
     }
     const registryStatus = await handleUserCreation(email, password);
-    console.log(registryStatus);
     if (registryStatus === 409) {
       return setIsEmailAlreadyInUse(true);
     }
     if (registryStatus === 201) {
-      console.log('aqui')
       setIsUserCreated(true);
       clearInvalidDataMessage()
       return setTimeout(() => navigate('/'), 10000);
