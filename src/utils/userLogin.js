@@ -17,9 +17,9 @@ const handleUserCreation = async (email, password) => {
     password: password,
     balance: "0"
   }).catch((error) => {
-    return error.response.data
+    return error
   });
-  return response.status;
+  return response.status ? response.status : response.response.status
 }
 
 
