@@ -1,0 +1,32 @@
+.register_page {
+  align-items: center;
+  background-color: #e5e5e5;
+  color: #535353;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.register_page > .login_logo {
+  position: absolute;
+  inset: 0;
+}
+
+.register_container {
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 35vw;
+  gap: 6.4vh;
+}
+
+.register_container > h1 {
+  height: 10vh;
+}
+
+.register_container > .form_container {
+  width: 100%;
+}

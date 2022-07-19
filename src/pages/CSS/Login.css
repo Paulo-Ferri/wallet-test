@@ -12,21 +12,35 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3vh;
   padding-top: 15vh;
   height: 85vh;
   width: 42vw;
 }
 
-.login_form_container{
+.form_container {
   display: flex;
   flex-direction: column;
-  gap: 5vh;
+  justify-content: center;
   height: 60vh;
   width: 65%;
 }
 
-.login_form_input {
+.form_container > p {
+  height: 5vh;
+  width: 100%;
+}
+
+.label_container {
+  margin-bottom: 3vh;
+  height: 8vh;
+}
+
+.label_container > p {
+  font-size: 15px;
+  height: 3vh;
+}
+
+.form_input {
   background-color: #e5e5e5;
   border: none;
   border-bottom: 1px solid #a6a6a6;
@@ -37,14 +51,33 @@
   width: 100%;
 }
 
-.login_form_button {
+.invalid_login_message {
+  color: red;
+  position: relative;
+  bottom: 1.2vh;
+  font-size: 18px;
+  height: 3vh;
+}
+
+.form_button {
   background-color: #FCA311;
   border-radius: 5px;
   color: #535353;
   cursor: pointer;
   font-size: 16px;
   height: 4.5vh;
+  margin-bottom: 3vh;
   margin-top: 1.4vh;
+}
+
+.link_registry_btn {
+  color: #535353;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.link_registry_btn:hover {
+  text-decoration: underline;
 }
 
 .animation_login_container {
@@ -75,4 +108,29 @@
 
 .login_logo > h1 {
   font-size: 25px;
+}
+
+.wrong_infos {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  border-bottom: 1px solid red;
+}
+
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
