@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import walletIcon from '../images/wallet_icon.png'
 import setLocalStorage from '../utils/localStorageSetItem';
-import {handleLogin} from '../utils/userLogin';
+import {handleLogin} from '../utils/apiUtilities';
 import './CSS/Login.css';
 
 const Login = () => {
@@ -50,11 +50,11 @@ const Login = () => {
 
   return (
     <div className="login_page" >
+      <div className="login_logo">
+        <img src={ walletIcon } alt="icon representing a wallet" />
+        <h1>XP WALLET</h1>
+      </div>
       <div className="animation_login_container">
-        <div className="login_logo">
-          <img src={ walletIcon } alt="icon representing a wallet" />
-          <h1>XP WALLET</h1>
-        </div>
         <iframe title="investment animation" src="https://embed.lottiefiles.com/animation/73295" />
       </div>
       <div className="login_container">
@@ -70,12 +70,12 @@ const Login = () => {
               className={!isEmailValid ? "wrong_infos form_input" : "form_input"}
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="E-mail"
               value={ email }
               onChange={(e) => setEmail(e.target.value)}
             />
             {!isEmailValid && (
-              <p>Você deve informar um email no formato: xp@wallet.com</p>
+              <p>Você deve informar um e-mail no formato: xp@wallet.com</p>
             )}
           </label>
           <label
@@ -96,7 +96,7 @@ const Login = () => {
           </label>
           <div className="invalid_login_message">
           {isIncorrectLogin && (
-            <p className="invalid_login_message">Email ou senha incorretos!</p>
+            <p className="invalid_login_message">E-mail ou senha incorretos!</p>
           )}
           </div>
           <button

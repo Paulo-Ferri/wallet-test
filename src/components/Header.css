@@ -1,0 +1,18 @@
+.header_component {
+  align-items: center;
+  height: 15vh;
+  width: 96vw;
+  display: flex;
+  padding-right: 2vw;
+  justify-content: flex-end;
+}
+
+.header_email_container {
+  background-color: #F1F2F6;
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  min-width: 10vw;
+  padding: 0 2vw;
+  height: 5vh;
+}

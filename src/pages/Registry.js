@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import walletIcon from '../images/wallet_icon.png';
-import { handleUserCreation } from '../utils/userLogin';
+import { handleUserCreation } from '../utils/apiUtilities';
 import './CSS/Registry.css'
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailAlreadyInUse, setIsEmailAlreadyInUse] = useState(false);
@@ -22,9 +23,10 @@ const Register = () => {
     if (password.length < 8) {
       return setIsPasswordValid(false);
     }
-    const registryStatus = await handleUserCreation(email, password);
+    const registryStatus = await handleUserCreation(email, password, name);
     if (registryStatus === 409) {
-      return setIsEmailAlreadyInUse(true);
+      setIsEmailAlreadyInUse(true);
+      return setTimeout(() => setIsEmailAlreadyInUse(false), 10000);
     }
     if (registryStatus === 201) {
       setIsUserCreated(true);
@@ -45,7 +47,7 @@ const Register = () => {
         <h1>XP WALLET</h1>
       </div>
       <div className="register_container">
-        <h1>Dê o primeiro passo rumo à sua independência financeira! </h1>
+        <h1>Dê o primeiro passo rumo à sua independência financeira!</h1>
         <form className="form_container">
             <label
               className="label_container"
@@ -55,12 +57,12 @@ const Register = () => {
                 className={!isEmailValid ? "wrong_infos form_input" : "form_input"}
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             {!isEmailValid && (
-                <p>Você deve informar um email no formato: xp@wallet.com</p>
+                <p>Você deve informar um e-mail no formato: xp@wallet.com</p>
             )}
             </label>
             <label
@@ -79,14 +81,27 @@ const Register = () => {
               <p>Sua senha deve conter mais de oito dígitos!</p>
             )}
             </label>
+            <label
+              className="label_container"
+              htmlFor="name"
+            >
+              <input
+                className="form_input"
+                type="text"
+                name="name"
+                placeholder="Como você quer ser chamado?"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
             <div className="invalid_login_message">
-            {isEmailAlreadyInUse && (
-            <p>Esse email já está em uso!</p>
-            )}
-            {isUserCreated && (
-              <p>Usuário criado com sucesso! Redirecionando para o login.</p>
-            )}
-          </div>
+              {isEmailAlreadyInUse && (
+              <p>Já há uma conta criada com esse e-mail.</p>
+              )}
+              {isUserCreated && (
+                <p>Usuário criado com sucesso! Redirecionando para o login.</p>
+              )}
+            </div>
             <button
               type="submit"
               className="form_button"
