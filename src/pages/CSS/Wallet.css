@@ -9,13 +9,13 @@
     max-width: 100vw;
 }
 
-.personal_actives_container, .new_actives_container {
+.personal_assets_container, .new_assets_container {
     width: 80vw;
     min-height: 10vh;
     margin-top: 15vh;
 }
 
-.actives_table {
+.assets_table {
     background-color: #F1F2F6;
     border-radius: 5px;
     table-layout: fixed;
@@ -27,7 +27,7 @@
     padding-left: 3vw;
 }
 
-.buy_active_button, .sell_active_button {
+.buy_assets_button, .sell_assets_button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -35,26 +35,26 @@
     width: 6vw;
 }
 
-.buy_active_button {
+.buy_assets_button {
     background-color: #FCA311;
     margin-right: 0.5vw;
 }
 
-.sell_active_button {
+.sell_assets_button {
     background-color: #55b1a5;
 }
 
-.actives_table > tbody > tr > td {
+.assets_table > tbody > tr > td {
     /* border-top: 1px solid #535353; */
     background-color: #F1F2F6;
     padding: 2vh 0;
 }
 
-.actives_table > tbody >tr {
+.assets_table > tbody >tr {
     margin-bottom: 1vh;
 }
 
-.actives_table > tbody > tr > th {
+.assets_table > tbody > tr > th {
     padding: 2vh 0;
 }
 

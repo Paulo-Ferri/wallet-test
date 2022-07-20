@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
-import { getActivesByEmail, getAllActives } from '../utils/apiUtilities';
+import { getAssetsByEmail, getAllAssets } from '../utils/apiUtilities';
 import './CSS/Wallet.css'
 
 const Wallet = () => {
   const [userEmail, setUserEmail] = useState('');
   const [nickName, setNickName] = useState('');
-  const [userActives, setUserActives] = useState([]);
-  const [allActives, setAllActives] = useState([]);
-  const [newActives, setNewActives] = useState([]);
+  const [userAssets, setUserAssets] = useState([]);
+  const [allAssets, setAllAssets] = useState([]);
+  const [newAssets, setNewAssets] = useState([]);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("email");
@@ -17,8 +17,8 @@ const Wallet = () => {
 
   useEffect(() => {
     async function fetchUserActives() {
-      const fetchedUserActives = await getActivesByEmail(userEmail);
-      setUserActives(fetchedUserActives.data.message.actives);
+      const fetchedUserActives = await getAssetsByEmail(userEmail);
+      setUserAssets(fetchedUserActives.data.message.actives);
       setNickName(fetchedUserActives.data.message.name);
     }
     fetchUserActives();
@@ -26,28 +26,28 @@ const Wallet = () => {
 
   useEffect(() => {
     async function fetchAllActives() {
-      const fetchedAllActives = await getAllActives();
-      setAllActives(fetchedAllActives.data);
+      const fetchedAllActives = await getAllAssets();
+      setAllAssets(fetchedAllActives.data);
     }
     fetchAllActives();
   }, [])
 
   useEffect(() => {
-    const filteredActives = allActives.filter((el) => {
-      return userActives.every(fd => fd.name !== el.name)
+    const filteredActives = allAssets.filter((el) => {
+      return userAssets.every(fd => fd.name !== el.name)
     });
-    setNewActives(filteredActives)
-  }, [userActives, allActives]);
+    setNewAssets(filteredActives)
+  }, [userAssets, allAssets]);
 
   return (
     <div className="wallet_page">
       <Header name={nickName}/>
       <div
-        className="personal_actives_container"
+        className="personal_assets_container"
       >
         <h2>Seus ativos</h2>
-        <table className="actives_table">
-          {userActives.length ? (
+        <table className="assets_table">
+          {userAssets.length ? (
           <tbody> 
             <tr>
               <th>Nome</th>
@@ -58,15 +58,15 @@ const Wallet = () => {
           ) : (
             <p>Você ainda não possui nenhum ativo!</p>
           )}
-          {userActives.length ? userActives.map((active) => {
+          {userAssets.length ? userAssets.map((active) => {
             return (
               <tbody>
                 <tr>
                   <td>{active.name}</td>
                   <td>{active.UserActive.quantity}</td>
                   <td>{active.value}</td>
-                  <td className="td_btn"><button className="buy_active_button">Comprar</button></td>
-                  <td className="td_btn"><button className="sell_active_button">Vender</button></td>
+                  <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
+                  <td className="td_btn"><button className="sell_assets_button">Vender</button></td>
                 </tr>
               </tbody>
             )
@@ -74,10 +74,10 @@ const Wallet = () => {
             null
           )}
         </table>
-        <div className="new_actives_container">
+        <div className="new_assets_container">
           <h2>Disponíveis para investir</h2>
-          {newActives.length && (
-            <table className="actives_table">
+          {newAssets.length && (
+            <table className="assets_table">
               <tbody> 
                 <tr>
                   <th>Nome</th>
@@ -85,15 +85,15 @@ const Wallet = () => {
                   <th>Valor (R$)</th>
                 </tr>
               </tbody>
-              {newActives.map((active) => {
+              {newAssets.map((active) => {
                 return (
                   <tbody>
                   <tr>
                     <td>{active.name}</td>
                     <td>{active.quantity}</td>
                     <td>{active.value}</td>
-                    <td className="td_btn"><button className="buy_active_button">Comprar</button></td>
-                    <td className="td_btn"><button disabled={true} className="sell_active_button">Vender</button></td>
+                    <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
+                    <td className="td_btn"><button disabled={true} className="sell_assets_button">Vender</button></td>
                   </tr>
                 </tbody>
                 )

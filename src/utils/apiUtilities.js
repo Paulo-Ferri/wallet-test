@@ -23,7 +23,7 @@ const handleUserCreation = async (email, password, name) => {
   return response.status ? response.status : response.response.status
 }
 
-const getActivesByEmail = async (email) => {
+const getAssetsByEmail = async (email) => {
   const actives = await axios.get('https://pauloferrixpwallet.herokuapp.com/useractives/email', {
     params: {
       email: email
@@ -34,7 +34,7 @@ const getActivesByEmail = async (email) => {
   return actives;
 }
 
-const getAllActives = async () => {
+const getAllAssets = async () => {
   const allActives = await axios.get('https://pauloferrixpwallet.herokuapp.com/actives')
   .catch((error) => {
     return error
@@ -45,6 +45,6 @@ const getAllActives = async () => {
 export {
   handleLogin,
   handleUserCreation,
-  getActivesByEmail,
-  getAllActives,
+  getAssetsByEmail,
+  getAllAssets,
 };
