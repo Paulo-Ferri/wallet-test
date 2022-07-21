@@ -1,52 +1,16 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {Dialog} from '@headlessui/react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AppContext from '../context/Context';
-import { getAssetsByEmail, getAllAssets } from '../utils/apiUtilities';
 import closeIcon from '../images/close-icon.png';
 import './CSS/Wallet.css';
 import './CSS/BuyDialog.css';
+import BuyAsset from '../components/BuyAsset';
 
 const Wallet = () => {
-  const [userEmail, setUserEmail] = useState('');
-  const [nickName, setNickName] = useState('');
-  const [userAssets, setUserAssets] = useState([]);
-  const [allAssets, setAllAssets] = useState([]);
-  const [newAssets, setNewAssets] = useState([]);
   const [isOrderOpen, setIsOrderOpen] = useState(false);
-  const {setCurrentAsset, setOrderType, orderType, currentAsset } = useContext(AppContext)
-
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem("email");
-    setUserEmail(savedUser);
-  }, []);
-
-  useEffect(() => {
-    async function fetchUserActives() {
-      const fetchedUserActives = await getAssetsByEmail(userEmail);
-      setUserAssets(fetchedUserActives.data.message.actives);
-      setNickName(fetchedUserActives.data.message.name);
-    }
-    fetchUserActives();
-  }, [userEmail]);
-
-  useEffect(() => {
-    async function fetchAllActives() {
-      const fetchedAllActives = await getAllAssets();
-      setAllAssets(fetchedAllActives.data);
-    }
-    fetchAllActives();
-  }, [])
-
-  useEffect(() => {
-    const filteredAssets = allAssets.filter((asset) => {
-      return userAssets.every(usedAsset => usedAsset.name !== asset.name)
-    });
-  
-    setNewAssets(filteredAssets)
-  }, [userAssets, allAssets]);
+  const {setCurrentAsset, setOrderType, orderType, filteredAssets, userAssets } = useContext(AppContext);
 
   const handleOrder = (asset, type) => {
     setOrderType(type);
@@ -56,22 +20,22 @@ const Wallet = () => {
 
   return (
     <div className="wallet_page">
-      <Header name={nickName}/>
+      <Header/>
       <div
         className="personal_assets_container"
       >
         <h2 className="personal_assets_h2">Seus ativos</h2>
         <div className="personal_assets_infos">
-          {userAssets.length ? (
+          {userAssets && userAssets.length ? (
           <table className="assets_table">
-          <tbody> 
+          <thead> 
             <tr>
               <th>Nome</th>
               <th>Quantidade</th>
               <th>Valor (R$)</th>
             </tr>
-          </tbody>
-          {userAssets.map((asset) => {
+          </thead>
+          {userAssets && userAssets.map((asset) => {
             return (
               <tbody>
                 <tr>
@@ -100,30 +64,46 @@ const Wallet = () => {
           })}
         </table>
           ) : (
-            <p className="no_assets_message">Você não possui nenhum ativo na sua carteira até o momento!</p>
+            <p className="no_assets_message">
+              Você não possui nenhum ativo na sua carteira até o momento!
+            </p>
           )}
         </div>
         <div className="new_assets_container">
           <h2 className="personal_assets_h2">Disponíveis para investir</h2>
           <div className="personal_assets_infos">
-          {newAssets.length && (
+          {filteredAssets.length && (
             <table className="assets_table">
-              <tbody> 
+              <thead> 
                 <tr>
                   <th>Nome</th>
                   <th>Quantidade</th>
                   <th>Valor (R$)</th>
                 </tr>
-              </tbody>
-              {newAssets.map((asset) => {
+              </thead>
+              {filteredAssets.map((asset) => {
                 return (
                   <tbody>
                   <tr>
                     <td>{asset.name}</td>
                     <td>{asset.quantity}</td>
                     <td>{asset.value}</td>
-                    <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
-                    <td className="td_btn"><button disabled={true} className="sell_assets_button">Vender</button></td>
+                    <td className="td_btn">
+                      <button
+                        className="buy_assets_button"
+                        onClick={() => handleOrder(asset, "compra")}
+                      >
+                        Comprar
+                      </button>
+                    </td>
+                    <td className="td_btn">
+                      <button
+                        disabled={true}
+                        className="sell_assets_button"
+                      >
+                        Vender
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
                 )
@@ -143,7 +123,10 @@ const Wallet = () => {
               onClick={() => setIsOrderOpen(false)}>
               <img className="backdrop_close_icon" src={closeIcon} alt="icon to close order" />
             </button>
-            <Dialog.Title className="backdrop_title">{`Complete sua ordem de ${orderType}`}!</Dialog.Title>
+            <Dialog.Title className="backdrop_title">
+              {`Complete sua ordem de ${orderType}!`}
+            </Dialog.Title>
+            <BuyAsset />
           </Dialog.Panel>
         </div>
       </Dialog>

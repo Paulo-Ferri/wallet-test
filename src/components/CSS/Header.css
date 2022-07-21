@@ -1,11 +1,15 @@
 .header_component {
   background-color: #FCA311;
   align-items: center;
-  height: 12vh;
+  height: 8vh;
   width: 100vw;
   display: flex;
   justify-content: flex-end;
   position: fixed;
+}
+
+.header_component > .login_logo {
+  height: 6vh
 }
 
 .header_email_container {
@@ -15,6 +19,7 @@
   display: flex;
   min-width: 10vw;
   margin-right: 2vw;
+  justify-content: center;
   padding: 0 2vw;
   height: 5vh;
 }

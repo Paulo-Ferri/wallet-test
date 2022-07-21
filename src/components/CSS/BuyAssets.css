@@ -1,0 +1,21 @@
+.asset_order_container {
+  align-items: center;
+  gap: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.asset_input_quantity {
+  padding-left: 1vw;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  width: 19vw;
+  height: 3.5vh;
+}
+
+.asset_confirm_btn {
+  border-radius: 5px;
+  background-color: #FCA311;
+  width: 20vw;
+  height: 3.5vh;
+}

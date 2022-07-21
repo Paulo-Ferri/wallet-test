@@ -15,11 +15,11 @@
     flex-direction: column;
     width: 80vw;
     min-height: 10vh;
-    margin-top: 15vh;
+    margin-top: 10vh;
 }
 
 .personal_assets_container {
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 
 .new_assets_container {
@@ -72,7 +72,7 @@
     padding: 2vh 0;
 }
 
-.assets_table > tbody > tr > th {
+.assets_table > thead > tr > th {
     padding: 2vh 0;
 }
 
