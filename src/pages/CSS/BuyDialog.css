@@ -1,0 +1,42 @@
+.backdrop_background {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 50%;
+}
+
+.backdrop_fullscreen_container {
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+}
+
+.dialog_container {
+  color: #535353;
+  position: relative;
+  z-index: 10;
+  inset: 0;
+}
+
+.backdrop_panel {
+  background-color: #F1F2F6;
+  border-radius: 5px;
+  width: 70vw;
+  height: 70vh;
+  padding: 2vh 1vw;
+}
+
+.backdrop_close_icon {
+  background-color: transparent;
+  height: 3vh;
+}
+
+.backdrop_close_btn {
+  outline: transparent;
+  cursor: pointer;
+  background-color: transparent;
+  float: right;
+}

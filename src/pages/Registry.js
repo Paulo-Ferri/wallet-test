@@ -89,7 +89,7 @@ const Register = () => {
                 className="form_input"
                 type="text"
                 name="name"
-                placeholder="Como você quer ser chamado?"
+                placeholder="Como você quer ser chamado(a)?"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />

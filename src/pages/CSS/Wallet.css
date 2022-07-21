@@ -50,15 +50,12 @@
     padding-left: 3vw;
 }
 
-.assets_table tr:nth-child(even) {
-    background-color: #FCA311;
-}
-
 .buy_assets_button, .sell_assets_button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     height: 5vh;
+    outline: transparent;
     width: 6vw;
 }
 

@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import {Dialog} from '@headlessui/react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import AppContext from '../context/Context';
 import { getAssetsByEmail, getAllAssets } from '../utils/apiUtilities';
-import './CSS/Wallet.css'
+import closeIcon from '../images/close-icon.png';
+import './CSS/Wallet.css';
+import './CSS/BuyDialog.css';
 
 const Wallet = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -10,6 +14,9 @@ const Wallet = () => {
   const [userAssets, setUserAssets] = useState([]);
   const [allAssets, setAllAssets] = useState([]);
   const [newAssets, setNewAssets] = useState([]);
+  const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const {setCurrentAsset, setOrderType, orderType, currentAsset } = useContext(AppContext)
+
 
   useEffect(() => {
     const savedUser = localStorage.getItem("email");
@@ -41,6 +48,12 @@ const Wallet = () => {
     setNewAssets(filteredAssets)
   }, [userAssets, allAssets]);
 
+  const handleOrder = (asset, type) => {
+    setOrderType(type);
+    setCurrentAsset(asset);
+    setIsOrderOpen(true);
+  }
+
   return (
     <div className="wallet_page">
       <Header name={nickName}/>
@@ -65,8 +78,22 @@ const Wallet = () => {
                   <td>{asset.name}</td>
                   <td>{asset.UserActive.quantity}</td>
                   <td>{asset.value}</td>
-                  <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
-                  <td className="td_btn"><button className="sell_assets_button">Vender</button></td>
+                  <td className="td_btn">
+                    <button
+                      className="buy_assets_button"
+                      onClick={() => handleOrder(asset, "compra")}
+                    >
+                      Comprar
+                    </button>
+                  </td>
+                  <td className="td_btn">
+                    <button
+                      className="sell_assets_button"
+                      onClick={() => handleOrder(asset, "venda")}
+                    >
+                      Vender
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             )
@@ -88,13 +115,13 @@ const Wallet = () => {
                   <th>Valor (R$)</th>
                 </tr>
               </tbody>
-              {newAssets.map((active) => {
+              {newAssets.map((asset) => {
                 return (
                   <tbody>
                   <tr>
-                    <td>{active.name}</td>
-                    <td>{active.quantity}</td>
-                    <td>{active.value}</td>
+                    <td>{asset.name}</td>
+                    <td>{asset.quantity}</td>
+                    <td>{asset.value}</td>
                     <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
                     <td className="td_btn"><button disabled={true} className="sell_assets_button">Vender</button></td>
                   </tr>
@@ -107,6 +134,19 @@ const Wallet = () => {
         </div>
       </div>
       <Footer />
+      <Dialog className="dialog_container" open={isOrderOpen} onClose={() => setIsOrderOpen(false)}>
+        <div className="backdrop_background" aria-hidden="true" />
+        <div className="backdrop_fullscreen_container" >
+          <Dialog.Panel className="backdrop_panel">
+            <button
+              className="backdrop_close_btn"
+              onClick={() => setIsOrderOpen(false)}>
+              <img className="backdrop_close_icon" src={closeIcon} alt="icon to close order" />
+            </button>
+            <Dialog.Title className="backdrop_title">{`Complete sua ordem de ${orderType}`}!</Dialog.Title>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 };
