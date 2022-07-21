@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getAssetsByEmail, getAllAssets } from '../utils/apiUtilities';
 import './CSS/Wallet.css'
@@ -33,10 +34,11 @@ const Wallet = () => {
   }, [])
 
   useEffect(() => {
-    const filteredActives = allAssets.filter((el) => {
-      return userAssets.every(fd => fd.name !== el.name)
+    const filteredAssets = allAssets.filter((asset) => {
+      return userAssets.every(usedAsset => usedAsset.name !== asset.name)
     });
-    setNewAssets(filteredActives)
+  
+    setNewAssets(filteredAssets)
   }, [userAssets, allAssets]);
 
   return (
@@ -45,9 +47,10 @@ const Wallet = () => {
       <div
         className="personal_assets_container"
       >
-        <h2>Seus ativos</h2>
-        <table className="assets_table">
+        <h2 className="personal_assets_h2">Seus ativos</h2>
+        <div className="personal_assets_infos">
           {userAssets.length ? (
+          <table className="assets_table">
           <tbody> 
             <tr>
               <th>Nome</th>
@@ -55,27 +58,27 @@ const Wallet = () => {
               <th>Valor (R$)</th>
             </tr>
           </tbody>
-          ) : (
-            <p>Você ainda não possui nenhum ativo!</p>
-          )}
-          {userAssets.length ? userAssets.map((active) => {
+          {userAssets.map((asset) => {
             return (
               <tbody>
                 <tr>
-                  <td>{active.name}</td>
-                  <td>{active.UserActive.quantity}</td>
-                  <td>{active.value}</td>
+                  <td>{asset.name}</td>
+                  <td>{asset.UserActive.quantity}</td>
+                  <td>{asset.value}</td>
                   <td className="td_btn"><button className="buy_assets_button">Comprar</button></td>
                   <td className="td_btn"><button className="sell_assets_button">Vender</button></td>
                 </tr>
               </tbody>
             )
-          }) : (
-            null
-          )}
+          })}
         </table>
+          ) : (
+            <p className="no_assets_message">Você não possui nenhum ativo na sua carteira até o momento!</p>
+          )}
+        </div>
         <div className="new_assets_container">
-          <h2>Disponíveis para investir</h2>
+          <h2 className="personal_assets_h2">Disponíveis para investir</h2>
+          <div className="personal_assets_infos">
           {newAssets.length && (
             <table className="assets_table">
               <tbody> 
@@ -100,8 +103,10 @@ const Wallet = () => {
               })}
             </table>
           )}
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

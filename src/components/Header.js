@@ -1,6 +1,6 @@
 import React from 'react';
 import walletIcon from '../images/wallet_icon.png'
-import './Header.css';
+import './CSS/Header.css';
 
 const Header = ({name}) => {
   return (
