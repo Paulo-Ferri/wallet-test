@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import walletIcon from '../images/wallet_icon.png'
 import setLocalStorage from '../utils/localStorageSetItem';
 import {handleLogin} from '../utils/apiUtilities';
+import toast, { Toaster } from 'react-hot-toast';
 import './CSS/Login.css';
+import AppContext from '../context/Context';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-  const [isIncorrectLogin, setisIncorrectLogin] = useState(false);
-  const navigate = useNavigate() 
+  const {setUserId, setUserEmail} = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const email = localStorage.getItem('email');
@@ -28,9 +31,15 @@ const Login = () => {
       return setIsPasswordValid(false);
     }
     const loginStatus = await handleLogin(email, password);
-    if (loginStatus.data && loginStatus.data.message === 'logged successfully') {
+    if (loginStatus.data && loginStatus.data.message.id) {
+      setUserId(loginStatus.data.message.id);
+      setUserEmail(email);
       setLocalStorage("email", email);
-      return navigate('/wallet');
+      setLocalStorage("userId", loginStatus.data.message.id);
+      toast.success('Sucesso! Redirecionando para carteira.', {
+        duration: 5000
+      });
+      return setTimeout(() => navigate('/wallet'), 5000)
     }
    return handleIncorrectLogin();
   }
@@ -38,9 +47,10 @@ const Login = () => {
   const handleIncorrectLogin = () => {
     setEmail('');
     setPassword('')
-    setisIncorrectLogin(true);
-    setTimeout(() => setisIncorrectLogin(false), 10000);
-    clearInvalidDataMessage()
+    toast.error('Email ou senha inválidos!', {
+      duration: 5000
+    });
+    setTimeout(clearInvalidDataMessage, 5000)
   }
 
   const clearInvalidDataMessage = () => {
@@ -50,6 +60,7 @@ const Login = () => {
 
   return (
     <div className="login_page" >
+      <div><Toaster/></div>
       <div className="login_logo">
         <img src={ walletIcon } alt="icon representing a wallet" />
         <h1>XP WALLET</h1>
@@ -95,9 +106,6 @@ const Login = () => {
             )}
           </label>
           <div className="invalid_login_message">
-          {isIncorrectLogin && (
-            <p className="invalid_login_message">E-mail ou senha incorretos!</p>
-          )}
           </div>
           <button
             type="submit"

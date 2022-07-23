@@ -1,19 +1,43 @@
-.asset_order_container {
+.order_container {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 3vh;
+}
+
+.asset_order_container {
+  margin-top: 7vh;
+  align-items: center;
+  gap: 5vh;
   display: flex;
   flex-direction: column;
 }
 
+.asset_quantity {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
 .asset_input_quantity {
+  color: black;
   padding-left: 1vw;
   border-radius: 5px;
   background-color: #e5e5e5;
-  width: 19vw;
+  width: 5vw;
   height: 3.5vh;
 }
 
+.asset_btn_quantity {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #FCA311;
+  height: 3.5vh;
+  width: 5vw;
+}
+
 .asset_confirm_btn {
+  cursor: pointer;
   border-radius: 5px;
   background-color: #FCA311;
   width: 20vw;

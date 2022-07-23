@@ -12,6 +12,7 @@ function Provider({ children }) {
   const [userName, setUserName] = useState('');
   const [filteredAssets, setFilteredAssets] = useState([]);
   const [userBalance, setUserBalance] = useState('');
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     async function fetchAllActives() {
@@ -24,7 +25,11 @@ function Provider({ children }) {
   useEffect(() => {
     const savedUser = localStorage.getItem("email");
     setUserEmail(savedUser);
+    const savedUserId = localStorage.getItem("userId")
+    setUserId(savedUserId);
   }, []);
+
+
 
   useEffect(() => {
     async function fetchUserAssets() {
@@ -52,9 +57,13 @@ function Provider({ children }) {
     userAssets,
     filteredAssets,
     userBalance,
-    userName
+    userName,
+    userId,
+    userEmail,
+    setUserId,
+    setUserEmail,
+    setUserBalance
   };
-
   return (
     <AppContext.Provider value={contextValue}>
       {children}

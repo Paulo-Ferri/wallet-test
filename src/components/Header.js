@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import AppContext from '../context/Context';
 import walletIcon from '../images/wallet_icon.png'
 import './CSS/Header.css';
+import Deposit from './Deposit';
 
 const Header = () => {
-  const {name} = useContext(AppContext);
+  const {userName} = useContext(AppContext);
 
   return (
     <div className="header_component">
@@ -13,7 +14,7 @@ const Header = () => {
         <h1>XP WALLET</h1>
       </div>
       <div className="header_email_container">
-        {`Olá, ${name}`}
+        {`Olá, ${userName}`}
       </div>
     </div>
   );

@@ -19,7 +19,7 @@
 }
 
 .personal_assets_container {
-    margin-top: 15vh;
+    margin-top: 10vh;
 }
 
 .new_assets_container {
@@ -38,7 +38,7 @@
     justify-content: center;
     margin-top: 5vh;
     min-height: 15vh;
-    width: 80%;
+    width: 65vw;
 
 }
 
@@ -79,4 +79,13 @@
 .td_btn {
     display: inline-block;
     width: 6.5vw;
+}
+
+.recomendation_and_deposit_container {
+    margin-top: 5vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2vw;
 }

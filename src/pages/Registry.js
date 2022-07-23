@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import walletIcon from '../images/wallet_icon.png';
 import { handleUserCreation } from '../utils/apiUtilities';
+import toast, { Toaster } from 'react-hot-toast';
 import './CSS/Registry.css'
 
 const Register = () => {
@@ -10,8 +11,6 @@ const Register = () => {
   const [name, setName] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-  const [isEmailAlreadyInUse, setIsEmailAlreadyInUse] = useState(false);
-  const [isUserCreated, setIsUserCreated] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -25,23 +24,21 @@ const Register = () => {
     }
     const registryStatus = await handleUserCreation(email, password, name);
     if (registryStatus === 409) {
-      setIsEmailAlreadyInUse(true);
-      return setTimeout(() => setIsEmailAlreadyInUse(false), 10000);
+      return toast.error('Esse email já está em uso!', {
+        duration: 5000
+      });
     }
     if (registryStatus === 201) {
-      setIsUserCreated(true);
-      clearInvalidDataMessage()
-      return setTimeout(() => navigate('/'), 10000);
+      toast.success('Conta criada com sucesso! Redirecionando para login.', {
+        duration: 5000
+      });
+      return setTimeout(() => navigate('/'), 5000);
     }
-  }
-
-  const clearInvalidDataMessage = () => {
-    setIsPasswordValid(true);
-    setIsEmailValid(true);
   }
 
   return (
     <div className="register_page">
+      <div><Toaster/></div>
       <div className="login_logo">
         <img src={ walletIcon } alt="icon representing a wallet" />
         <h1>XP WALLET</h1>
@@ -95,12 +92,6 @@ const Register = () => {
               />
             </label>
             <div className="invalid_login_message">
-              {isEmailAlreadyInUse && (
-              <p>Já há uma conta criada com esse e-mail.</p>
-              )}
-              {isUserCreated && (
-                <p>Usuário criado com sucesso! Redirecionando para o login.</p>
-              )}
             </div>
             <button
               type="submit"

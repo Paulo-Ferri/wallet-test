@@ -7,10 +7,19 @@ import closeIcon from '../images/close-icon.png';
 import './CSS/Wallet.css';
 import './CSS/BuyDialog.css';
 import BuyAsset from '../components/BuyAsset';
+import SellAsset from '../components/SellAsset';
+import Deposit from '../components/Deposit';
+import Recomendation from '../components/Recomendation';
 
 const Wallet = () => {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
-  const {setCurrentAsset, setOrderType, orderType, filteredAssets, userAssets } = useContext(AppContext);
+  const {
+    setCurrentAsset,
+    setOrderType,
+    orderType,
+    filteredAssets,
+    userAssets
+  } = useContext(AppContext);
 
   const handleOrder = (asset, type) => {
     setOrderType(type);
@@ -21,6 +30,10 @@ const Wallet = () => {
   return (
     <div className="wallet_page">
       <Header/>
+      <div className="recomendation_and_deposit_container">
+        <Deposit />
+        <Recomendation />
+      </div>
       <div
         className="personal_assets_container"
       >
@@ -106,8 +119,8 @@ const Wallet = () => {
                     </td>
                   </tr>
                 </tbody>
-                )
-              })}
+                )})
+              }
             </table>
           )}
           </div>
@@ -126,7 +139,7 @@ const Wallet = () => {
             <Dialog.Title className="backdrop_title">
               {`Complete sua ordem de ${orderType}!`}
             </Dialog.Title>
-            <BuyAsset />
+            {orderType === "compra" ? <BuyAsset /> : <SellAsset />}
           </Dialog.Panel>
         </div>
       </Dialog>
