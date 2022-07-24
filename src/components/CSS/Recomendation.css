@@ -1,11 +1,11 @@
 .recomendation_component {
   border-radius: 5px;
   margin-top: 10vh;
-  width: 28vw;
+  width: 31vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 25vh;
+  height: 28vh;
 }
 
 .recomendation_card {
@@ -13,7 +13,7 @@
   border-radius: 5px;
   background-image: url('../../images/recomendation-img.jpeg');
   background-repeat: no-repeat;
-  width: 26vw;
+  width: 29vw;
   height: 17vh;
   font-weight: 900;
   padding: 0 0 2vh 2vw;
@@ -21,7 +21,7 @@
 
 .recomendation_card_texts {
   position: relative;
-  top: 13vh;
+  top: 10vh;
 }
 
 .recomendation_text_img > img {

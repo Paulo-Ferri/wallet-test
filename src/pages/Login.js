@@ -32,14 +32,21 @@ const Login = () => {
     }
     const loginStatus = await handleLogin(email, password);
     if (loginStatus.data && loginStatus.data.message.id) {
-      setUserId(loginStatus.data.message.id);
-      setUserEmail(email);
-      setLocalStorage("email", email);
-      setLocalStorage("userId", loginStatus.data.message.id);
-      toast.success('Sucesso! Redirecionando para carteira.', {
-        duration: 5000
-      });
-      return setTimeout(() => navigate('/wallet'), 5000)
+      try {
+        setUserId(loginStatus.data.message.id);
+        setUserEmail(email);
+        setLocalStorage("email", email);
+        setLocalStorage("userId", loginStatus.data.message.id);
+        toast.success('Sucesso! Redirecionando para carteira.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate('/wallet'), 5000)
+      } catch {
+        toast.error('Algo deu errado.', {
+          duration: 3000
+        });
+      }
+
     }
    return handleIncorrectLogin();
   }
@@ -48,9 +55,9 @@ const Login = () => {
     setEmail('');
     setPassword('')
     toast.error('Email ou senha inválidos!', {
-      duration: 5000
+      duration: 3000
     });
-    setTimeout(clearInvalidDataMessage, 5000)
+    setTimeout(clearInvalidDataMessage, 3000)
   }
 
   const clearInvalidDataMessage = () => {

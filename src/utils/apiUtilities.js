@@ -6,7 +6,7 @@ const handleLogin = async (email, password) => {
     email: email,
     password: password
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   console.log(response)
   return response
@@ -19,7 +19,7 @@ const handleUserCreation = async (email, password, name) => {
     balance: "0",
     name: name
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return response.status ? response.status : response.response.status
 }
@@ -30,7 +30,7 @@ const getAssetsByEmail = async (email) => {
       email: email
     }
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return actives;
 }
@@ -38,7 +38,7 @@ const getAssetsByEmail = async (email) => {
 const getAllAssets = async () => {
   const allAssets = await axios.get('https://pauloferrixpwallet.herokuapp.com/actives')
   .catch((error) => {
-    return error
+    throw new Error(error)
   });
   return allAssets;
 }
@@ -49,7 +49,7 @@ const modifyUserAsset = async (userId, activeId, quantity) => {
     activeId,
     quantity
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return modifiedAsset
 }
@@ -60,7 +60,7 @@ const createNewUserAsset = async (userId, activeId, quantity) => {
     activeId,
     quantity
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return createdUserAsset
 }
@@ -70,17 +70,17 @@ const changeAssetBalance = async (name, quantity) => {
     name,
     quantity
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return newAssetBalance
 }
 
 const changeUserBalance = async (balance, email) => {
-  const newUserBalance = await axios.put('https://pauloferrixpwallet.herokuapp.com/users/balance', {
+  const newUserBalance = await axios.put('https://paloferrixpwallet.herokuapp.com/users/balance', {
     balance,
     email
   }).catch((error) => {
-    return error
+    throw new Error(error)
   });
   return newUserBalance
 }
@@ -92,7 +92,7 @@ const deleteUserAsset = async (userId, activeId) => {
       activeId
     }
   }).catch((error) => {
-    return error;
+    throw new Error(error)
   });
   return deletedUserAsset
 }

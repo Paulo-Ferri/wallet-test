@@ -22,15 +22,22 @@ const Register = () => {
     if (password.length < 8) {
       return setIsPasswordValid(false);
     }
-    const registryStatus = await handleUserCreation(email, password, name);
+    let registryStatus = '';
+    try {
+      registryStatus = await handleUserCreation(email, password, name);
+    } catch {
+      return toast.error('Algo deu errado.', {
+        duration: 3000
+      });
+      }
     if (registryStatus === 409) {
       return toast.error('Esse email já está em uso!', {
-        duration: 5000
+        duration: 3000
       });
     }
     if (registryStatus === 201) {
       toast.success('Conta criada com sucesso! Redirecionando para login.', {
-        duration: 5000
+        duration: 3000
       });
       return setTimeout(() => navigate('/'), 5000);
     }

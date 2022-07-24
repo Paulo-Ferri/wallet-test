@@ -44,22 +44,34 @@ const BuyAsset = () => {
         duration: 5000
       });
     } else if(userAssets.some((asset) => asset.name === currentFilteredAsset.name)) {
-      await changeUserBalance((userBalance - +total), userEmail);
-      await modifyUserAsset(userId, currentFilteredAsset.id, (+desiredAmount + +UserActive.quantity));
-      await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity - +desiredAmount));
-      toast.success('Sucesso! Redirecionando para carteira.', {
-        duration: 5000
-      });
-      return setTimeout(() => navigate(0), 5000);
+      try {
+        await changeUserBalance((userBalance - +total), userEmail);
+        await modifyUserAsset(userId, currentFilteredAsset.id, (+desiredAmount + +UserActive.quantity));
+        await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity - +desiredAmount));
+        toast.success('Sucesso! Redirecionando para carteira.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate(0), 3000);
+      } catch {
+        toast.error('Algo deu errado.', {
+          duration: 3000
+        });
+      }
     } else {
-
-      await changeUserBalance((userBalance - +total), userEmail);
-      await createNewUserAsset(userId, currentFilteredAsset.id, desiredAmount)
-      await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity - +desiredAmount));
-      toast.success('Sucesso! Redirecionando para carteira.', {
-        duration: 5000
-      });
-      return setTimeout(() => navigate(0), 5000);
+      try {
+        await changeUserBalance((userBalance - +total), userEmail);
+        await createNewUserAsset(userId, currentFilteredAsset.id, desiredAmount)
+        await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity - +desiredAmount));
+        toast.success('Sucesso! Redirecionando para carteira.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate(0), 3000);
+      } catch {
+        toast.error('Algo deu errado.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate(0), 3000);
+      }
     }
   }
 

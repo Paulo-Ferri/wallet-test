@@ -15,7 +15,8 @@ const Recomendation = () => {
       <div className="recomendation_card">
       <div className="recomendation_card_texts">
         <p>Como investir dinheiro em ações?</p>
-        <p>Dicas essenciais para iniciantes!</p></div>
+        <p>Dicas essenciais para iniciantes!</p>
+      </div>
       </div>
     </div>
   );

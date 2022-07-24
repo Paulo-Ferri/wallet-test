@@ -16,12 +16,17 @@ const Deposit = () => {
 
   const handleDeposit = async () => {
     const finalBalance = +userBalance + +desiredDeposit;
-    console.log(finalBalance, userEmail);
-    await changeUserBalance(finalBalance, userEmail);
-    toast.success('Sucesso! Redirecionando para carteira.', {
-      duration: 5000
-    });
-    setTimeout(() => navigate(0), 5000);
+    try {
+      await changeUserBalance(finalBalance, userEmail);
+      toast.success('Sucesso! Redirecionando para carteira.', {
+        duration: 3000
+      });
+      setTimeout(() => navigate(0), 3000);
+    } catch {
+      toast.error('Algo deu errado.', {
+        duration: 3000
+      });
+    }
   }
 
   return (

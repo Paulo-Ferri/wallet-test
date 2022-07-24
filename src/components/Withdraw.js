@@ -19,14 +19,20 @@ const Withdraw = () => {
     if(finalBalance <= 0) {
       setDesiredWithdraw('');
       toast.error('Saldo insuficiente!', {
-        duration: 5000
+        duration: 3000
       });
     }
-    await changeUserBalance(finalBalance, userEmail);
-    toast.success('Sucesso! Redirecionando para carteira.', {
-      duration: 5000
-    });
-    setTimeout(() => navigate(0), 5000);
+    try {
+      await changeUserBalance(finalBalance, userEmail);
+      toast.success('Sucesso! Redirecionando para carteira.', {
+        duration: 3000
+      });
+      setTimeout(() => navigate(0), 3000);
+    } catch {
+      toast.error('Algo deu errado', {
+        duration: 3000
+      });
+    }
   }
 
   return (

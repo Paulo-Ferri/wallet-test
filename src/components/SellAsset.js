@@ -21,7 +21,6 @@ const SellAsset = () => {
   const [currentFilteredAsset, setCurrentFilteredAsset] = useState({});
   const [desiredAmount, setDesiredAmount] = useState('');
   const [total, setTotal] = useState(0);
-  // const [isPurchaseInvalid, setIsPurchaseInvalid] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,27 +38,38 @@ const SellAsset = () => {
   const handleSale = async () => {
     if (+desiredAmount > UserActive.quantity) {
       return toast.error('Ações insuficientes!', {
-        duration: 5000
+        duration: 3000
       });
     } else if (UserActive.quantity - +desiredAmount <= 0){
-      toast.success('Sucesso! Redirecionando para carteira.', {
-        duration: 5000
-      });
-      await changeUserBalance((userBalance + +total), userEmail);
-      await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity + +desiredAmount));
-      await deleteUserAsset(+userId, +currentFilteredAsset.id);
-      return setTimeout(() => navigate(0), 5000);
+      try {
+        await changeUserBalance((userBalance + +total), userEmail);
+        await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity + +desiredAmount));
+        await deleteUserAsset(+userId, +currentFilteredAsset.id);
+        toast.success('Sucesso! Redirecionando para carteira.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate(0), 3000);
+      } catch {
+        toast.error('Algo deu errado.', {
+          duration: 3000
+        });
+      }
     } else {
-      toast.success('Sucesso! Redirecionando para carteira.', {
-        duration: 5000
-      });
-      await changeUserBalance((userBalance + +total), userEmail);
-      await modifyUserAsset(+userId, currentFilteredAsset.id, (+UserActive.quantity - +desiredAmount));
-      await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity + +desiredAmount));
-      return setTimeout(() => navigate(0), 5000);
+      try {
+        await changeUserBalance((userBalance + +total), userEmail);
+        await modifyUserAsset(+userId, currentFilteredAsset.id, (+UserActive.quantity - +desiredAmount));
+        await changeAssetBalance(currentFilteredAsset.name, (+currentFilteredAsset.quantity + +desiredAmount));
+        toast.success('Sucesso! Redirecionando para carteira.', {
+          duration: 3000
+        });
+        return setTimeout(() => navigate(0), 3000);
+      } catch {
+        toast.error('Algo deu errado.', {
+          duration: 3000
+        });
+      }
     }
   }
-
   return (
     <div className="order_container">
       <div><Toaster/></div>
