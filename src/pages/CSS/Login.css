@@ -138,3 +138,49 @@
     transform: translate3d(4px, 0, 0);
   }
 }
+
+@media screen and ( max-width : 798px ) {
+  .login_page {
+    align-items: center;
+    font-size: 16px;
+    flex-direction: column;
+  }
+
+  .animation_login_container {
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 35vh;
+  }
+
+  .login_container {
+    align-items: center;
+    height: 60vh;
+    width: 100vw;
+    padding-top: 0;
+  }
+
+  .animation_login_container > iframe {
+    height: 80%;
+  }
+
+  .login_logo {
+    height: 8vh;
+    width: 60vw;
+  }
+  
+  .login_logo > img {
+    height: 5vh;
+  }
+  
+  .login_logo > h1 {
+    font-size: 20px;
+  }
+
+  .label_container {
+    margin-bottom: 1vh;
+  }
+  .form_container {
+    height: 45vh;
+  }
+}

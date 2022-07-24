@@ -112,8 +112,6 @@ const Login = () => {
               <p>Sua senha deve ser maior que oito dígitos!</p>
             )}
           </label>
-          <div className="invalid_login_message">
-          </div>
           <button
             type="submit"
             onClick={ (e) => handleSubmit(e) }
