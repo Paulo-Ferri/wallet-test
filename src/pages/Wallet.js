@@ -8,7 +8,7 @@ import './CSS/Wallet.css';
 import './CSS/BuyDialog.css';
 import BuyAsset from '../components/BuyAsset';
 import SellAsset from '../components/SellAsset';
-import Deposit from '../components/Deposit';
+import Deposit from '../components/Balance';
 import Recomendation from '../components/Recomendation';
 
 const Wallet = () => {

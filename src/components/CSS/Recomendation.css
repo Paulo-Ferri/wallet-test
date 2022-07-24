@@ -1,7 +1,35 @@
 .recomendation_component {
   border-radius: 5px;
   margin-top: 10vh;
-  background-color: #F1F2F6;
   width: 28vw;
-  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25vh;
+}
+
+.recomendation_card {
+  color: white;
+  border-radius: 5px;
+  background-image: url('../../images/recomendation-img.jpeg');
+  background-repeat: no-repeat;
+  width: 26vw;
+  height: 17vh;
+  font-weight: 900;
+  padding: 0 0 2vh 2vw;
+}
+
+.recomendation_card_texts {
+  position: relative;
+  top: 13vh;
+}
+
+.recomendation_text_img > img {
+  height: 5vh;
+}
+
+.recomendation_text_img {
+  font-weight: 900;
+  width: 100%;
+  display: flex;
 }

@@ -1,15 +1,32 @@
 .header_component {
+  color: black;
   background-color: #FCA311;
   align-items: center;
   height: 8vh;
   width: 100vw;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: fixed;
+  z-index: 1;
 }
 
-.header_component > .login_logo {
-  height: 6vh
+.login_logo_header {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  height: 6vh;
+  padding-left: 1vw;
+  width: 20vw;
+}
+
+.login_logo_header > img {
+  height: 4vh;
+}
+
+.login_logo_header > h1 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 22px;
+
 }
 
 .header_email_container {

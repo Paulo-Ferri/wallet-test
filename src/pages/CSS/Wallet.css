@@ -15,15 +15,12 @@
     flex-direction: column;
     width: 80vw;
     min-height: 10vh;
-    margin-top: 10vh;
-}
-
-.personal_assets_container {
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 .new_assets_container {
     margin-bottom: 5vh;
+    margin-top: 7vh;
 }
 
 .personal_assets_h2 {
@@ -51,7 +48,7 @@
 }
 
 .buy_assets_button, .sell_assets_button {
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
     height: 5vh;
@@ -65,7 +62,7 @@
 }
 
 .sell_assets_button {
-    background-color: #55b1a5;
+    background-color: rgb(170,170,246);
 }
 
 .assets_table > tbody > tr > td {

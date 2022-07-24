@@ -1,0 +1,59 @@
+.balance_component {
+  align-items: center;
+  border-radius: 5px;
+  background-color: #F1F2F6;
+  width: 28vw;
+  height: 25vh;
+  margin-top: 10vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.balance_component > img {
+  height: 25vh;
+  z-index: 0;
+  float: right;
+  position: relative;
+}
+
+.deposit_fund_btn {
+  background-color: #F1F2F6;
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  min-width: 10vw;
+  margin-right: 2vw;
+  justify-content: center;
+  padding: 0 2vw;
+  font-size: 16px;
+  height: 5vh;
+}
+
+.balance_and_deposit_container {
+  align-items: center;
+  /* border: 1px solid red; */
+  font-family: 'Michroma', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  font-size: 22px;
+}
+
+.balance_btn {
+  cursor: pointer;
+  background-color: #F1F2F6;
+  outline: none;
+  border-radius: 50px;
+  border: 1px solid black;
+  height: 3.5vh;
+  margin-top: 5vh;
+  font-size: 16px;
+  width: 6vw;
+}
+
+.deposit_withdraw_btns {
+  display: flex;
+  gap: 1vw;
+}
