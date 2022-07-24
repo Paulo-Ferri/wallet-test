@@ -9,12 +9,12 @@ const Header = () => {
   return (
     <div className="header_component">
       <div className="login_logo_header">
-        <img src={ walletIcon } alt="icon representing a wallet" />
+        {/* <img src={ walletIcon } alt="icon representing a wallet" /> */}
         <h1>XP WALLET</h1>
       </div>
-      <div className="header_email_container">
+      {/* <div className="header_email_container">
         {`Olá, ${userName}`}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .header_component {
-  color: black;
-  background-color: #FCA311;
+  color: #535353;
+  background-color: #ffbc00;
   align-items: center;
   height: 8vh;
   width: 100vw;
@@ -15,7 +15,7 @@
   align-items: center;
   gap: 0.5vw;
   height: 6vh;
-  padding-left: 1vw;
+  padding-left: 2.5vw;
   width: 20vw;
 }
 
@@ -25,7 +25,7 @@
 
 .login_logo_header > h1 {
   font-family: 'Michroma', sans-serif;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .header_email_container {

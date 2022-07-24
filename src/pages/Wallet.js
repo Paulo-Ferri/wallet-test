@@ -18,7 +18,8 @@ const Wallet = () => {
     setOrderType,
     orderType,
     filteredAssets,
-    userAssets
+    userAssets,
+    userName,
   } = useContext(AppContext);
 
   const handleOrder = (asset, type) => {
@@ -30,6 +31,9 @@ const Wallet = () => {
   return (
     <div className="wallet_page">
       <Header/>
+      <div className="user_greetings_wallet">
+        <p>{`Olá, ${userName}`}</p>
+      </div>
       <div className="recomendation_and_deposit_container">
         <Deposit />
         <Recomendation />

@@ -76,7 +76,7 @@ const changeAssetBalance = async (name, quantity) => {
 }
 
 const changeUserBalance = async (balance, email) => {
-  const newUserBalance = await axios.put('https://paloferrixpwallet.herokuapp.com/users/balance', {
+  const newUserBalance = await axios.put('https://pauloferrixpwallet.herokuapp.com/users/balance', {
     balance,
     email
   }).catch((error) => {

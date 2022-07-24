@@ -9,6 +9,14 @@
     max-width: 100vw;
 }
 
+.user_greetings_wallet {
+    color: #8786d1;
+    width: 60vw;
+    margin-top: 15vh;
+    font-size: 30px;
+    font-weight: 900;
+}
+
 .personal_assets_container, .new_assets_container {
     align-items: center;
     display: flex;
@@ -25,6 +33,9 @@
 
 .personal_assets_h2 {
     width: 80%;
+    text-align: center;
+    color: #8786d1;
+    font-weight: 900;
 }
 
 .personal_assets_infos {
@@ -35,7 +46,8 @@
     justify-content: center;
     margin-top: 5vh;
     min-height: 15vh;
-    width: 65vw;
+    padding-left: 2vw;
+    width: 63vw;
 
 }
 
@@ -48,28 +60,29 @@
 }
 
 .buy_assets_button, .sell_assets_button {
-    border-radius: 50px;
+    border: 1px solid black;
+    background-color: #F1F2F6;
+    border-radius: 0 5px;
     cursor: pointer;
     font-size: 16px;
     height: 5vh;
     outline: transparent;
     width: 6vw;
+    height: 4.5vh;
 }
 
 .buy_assets_button {
-    background-color: #FCA311;
     margin-right: 0.5vw;
 }
 
-.sell_assets_button {
-    background-color: rgb(170,170,246);
-}
-
 .assets_table > tbody > tr > td {
+    font-family: 'Michroma', sans-serif;
+    font-size: 16px;
     padding: 2vh 0;
 }
 
 .assets_table > thead > tr > th {
+    border-bottom: 1.5px solid #8786d1;
     padding: 2vh 0;
 }
 
@@ -79,10 +92,10 @@
 }
 
 .recomendation_and_deposit_container {
-    margin-top: 5vh;
-    align-items: center;
+    margin-top: 3vh;
     display: flex;
     justify-content: space-between;
     width: 65vw;
     gap: 2vw;
+    height: 28vh;
 }

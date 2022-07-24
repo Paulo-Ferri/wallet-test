@@ -4,11 +4,17 @@
   background-color: #F1F2F6;
   width: 30vw;
   height: 28vh;
-  margin-top: 10vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   padding-left: 2vw;
+}
+
+.balance_informative {
+  color: #8786d1;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 25px;
 }
 
 .balance_component > img {
@@ -33,28 +39,41 @@
 
 .balance_and_deposit_container {
   align-items: center;
-  /* border: 1px solid red; */
   font-family: 'Michroma', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  height: 100%;
   font-size: 22px;
 }
 
 .balance_btn {
+  align-items: center;
   cursor: pointer;
   background-color: #F1F2F6;
   outline: none;
-  border-radius: 50px;
+  display: flex;
+  border-radius: 0 5px;
+  gap: 0.5vw;
   border: 1px solid black;
   height: 3.5vh;
-  margin-top: 5vh;
   font-size: 16px;
-  width: 6vw;
+  width: 7vw;
+  padding-left: 0.5vw;
+}
+
+.balance_btn > img {
+  height: 2vh;
+}
+
+.balance_btn_withdraw > img {
+  transform: rotate(90deg);
 }
 
 .deposit_withdraw_btns {
+  margin-top: 4vh;
+  height: 5vh;
   display: flex;
   gap: 1vw;
 }

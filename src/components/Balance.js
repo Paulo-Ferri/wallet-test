@@ -3,6 +3,7 @@ import {Dialog} from '@headlessui/react';
 import AppContext from '../context/Context';
 import investmentSVG from '../images/investment/Wavy_Tech-24_Single-08.svg';
 import closeIcon from '../images/close-icon.png';
+import arrowIcon from '../images/arrow-icon.png';
 import Deposit from './Deposit';
 import './CSS/Balance.css';
 import Withdraw from './Withdraw';
@@ -17,23 +18,25 @@ const Balance = () => {
       <div className="balance_and_deposit_container">
           {userBalance && (
           <div>
-          <p>Seu saldo:</p>
+          <p className="balance_informative">Seu saldo</p>
           <p> R$ {userBalance.toFixed(2)}</p>
           </div>
           )}
         <div className="deposit_withdraw_btns">
-        <button
-          className="balance_btn"
-          onClick={() => setIsDepositOpen(true)}
-        >
-          Depósito
-        </button>
-        <button
-          className="balance_btn"
-          onClick={() => setIsWithdrawOpen(true)}
-        >
-          Saque
-        </button>
+          <button
+            className="balance_btn"
+            onClick={() => setIsDepositOpen(true)}
+          >
+          <img src={arrowIcon} alt="diagonal arrow" />
+            Depósito
+          </button>
+          <button
+            className="balance_btn balance_btn_withdraw"
+            onClick={() => setIsWithdrawOpen(true)}
+          >
+            <img src={arrowIcon} alt="diagonal arrow" />
+            Saque
+          </button>
         </div>
       </div>
       <img src={investmentSVG} alt="representation of an investment" />
