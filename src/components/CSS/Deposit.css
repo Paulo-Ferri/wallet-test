@@ -20,7 +20,6 @@
   font-family: 'Michroma', sans-serif;
 }
 
-
 .deposit_withdraw_funds_unit {
   position: absolute;
   display: block;
@@ -34,8 +33,6 @@
   position: relative;
   font-size: 16px;
 }
-
-
 
 .deposit_funds_options_container {
   display: flex;
@@ -77,4 +74,28 @@
 .confirm_deposit_btn:active {
   color: white;
   background-color: black;
+}
+
+@media screen and (max-device-width: 768px) {
+  .buyasset_balance_message {
+    font-size: 20px;
+  }
+
+  .buyasset_balance_info {
+    font-size: 16px;
+  }
+
+  .deposit_withdraw_funds_input {
+    width: 45vw;
+  }
+
+  .deposit_funds_options_container {
+    font-size: 18px;
+    width: 80%;
+  }
+
+  .confirm_deposit_btn{
+    width: 50vw;
+  }
+
 }

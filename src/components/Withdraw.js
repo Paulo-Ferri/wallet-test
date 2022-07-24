@@ -38,7 +38,10 @@ const Withdraw = () => {
   return (
     <div className="withdraw_component">
       <Toaster />
-      {userBalance && <p>Seu saldo: R$ {userBalance.toFixed(2)}</p>}
+      <div className="deposit_balance_message_info">
+          <p className="buyasset_balance_message">Seu saldo</p>
+          <p className="buyasset_balance_info">R$ {userBalance.toFixed(2)}</p>
+      </div>
       <label className="deposit_withdraw_funds_label">
         <input
           className="deposit_withdraw_funds_input"

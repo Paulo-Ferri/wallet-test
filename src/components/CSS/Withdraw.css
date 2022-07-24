@@ -49,3 +49,22 @@
   flex-direction: column;
   gap: 1vh;
 }
+
+@media screen and (max-device-width: 768px) {
+  .withdraw_funds_input {
+    width: 70vw;
+  }
+  .withdraw_funds_options_container {
+    width: 80%;
+  }
+
+  .withdraw_funds_option {
+    font-size: 18px;
+    width: 20vw;
+    justify-content: space-evenly;
+  }
+
+  .withdraw_funds_option > img {
+    width: 20vw;
+  }
+}

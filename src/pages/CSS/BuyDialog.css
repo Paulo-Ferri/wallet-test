@@ -40,3 +40,10 @@
   background-color: transparent;
   float: right;
 }
+
+@media screen and (max-device-width: 768px){
+  .backdrop_panel {
+    width: 95vw;
+    padding: 2vh 1vw;
+  }
+}
