@@ -39,3 +39,9 @@
   padding: 0 2vw;
   height: 5vh;
 }
+
+@media screen and (max-device-width: 768px) {
+  .login_logo_header {
+    width: 50vw;
+  }
+}

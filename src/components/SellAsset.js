@@ -89,13 +89,14 @@ const SellAsset = () => {
           </tr>
         </tbody>
       </table>
-      <div className="asset_order_container">
+      <div className="asset_order_container asset_order_sell_container">
+      <div className="asset_quantity_and_total">
         <label className="asset_quantity">
-          Quantidade: 
           <input
             className="asset_input_quantity"
             type="number"
             value={desiredAmount}
+            placeholder="Quantidade"
             onChange={(e) => setDesiredAmount(e.target.value)}
           />
           <button
@@ -106,7 +107,9 @@ const SellAsset = () => {
           </button>
         </label>
         <div className="asset_operation_total">
-          Valor total: R$ {isNaN(total) ? 0 : total}
+          <p>Valor total:</p>
+          <p className="asset_operation_total_calc"> R$ {isNaN(total) ? 0 : total}</p>
+        </div>
         </div>
         <button
           className="asset_confirm_btn"

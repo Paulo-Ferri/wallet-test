@@ -10,6 +10,10 @@
   padding-left: 2vw;
 }
 
+.balance_informative_container {
+  width: 90%;
+}
+
 .balance_informative {
   color: #8786d1;
   font-family: 'Lato', sans-serif;
@@ -54,7 +58,7 @@
   background-color: #F1F2F6;
   outline: none;
   display: flex;
-  border-radius: 0 5px;
+  border-radius: 5px;
   gap: 0.5vw;
   border: 1px solid black;
   height: 3.5vh;
@@ -67,6 +71,15 @@
   height: 2vh;
 }
 
+.balance_btn:active{
+  color: white;
+  background-color: black;
+}
+
+.balance_btn:active > img {
+  filter: invert(100%);
+}
+
 .balance_btn_withdraw > img {
   transform: rotate(90deg);
 }
@@ -76,4 +89,43 @@
   height: 5vh;
   display: flex;
   gap: 1vw;
+}
+
+@media screen and (max-device-width: 768px) {
+  .balance_component{
+    align-items: center;
+    width: 100%;
+    height: 18vh;
+    padding: 0;
+  }
+
+  .balance_component > img {
+    display: none;
+  }
+
+  .deposit_withdraw_btns {
+    justify-content: center;
+    margin-top: 2vh;
+    width: 100%;
+    gap: 5vw;
+  }
+
+  .balance_btn {
+    justify-content: center;
+    width: 33vw;
+  }
+  .balance_informative_container {
+    text-align: center;
+  }
+
+  .balance_informative_value {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .balance_informative {
+    font-size: 22px;
+    width: 60%;
+  }
 }

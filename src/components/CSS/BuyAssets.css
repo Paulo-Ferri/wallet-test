@@ -6,11 +6,16 @@
 }
 
 .asset_order_container {
-  margin-top: 7vh;
+  margin-top: 3vh;
   align-items: center;
   gap: 5vh;
   display: flex;
   flex-direction: column;
+  width: 30vw;
+}
+
+.asset_order_sell_container {
+  margin-top: 8vh;
 }
 
 .asset_quantity {
@@ -20,26 +25,71 @@
 }
 
 .asset_input_quantity {
+  background-color: #f1f2f6;
+  border-bottom: 1px solid #76777b;
   color: black;
-  padding-left: 1vw;
-  border-radius: 5px;
-  background-color: #e5e5e5;
-  width: 5vw;
+  width: 10vw;
+  font-size: 16px;
   height: 3.5vh;
 }
 
 .asset_btn_quantity {
+  border: 1px solid black;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #FCA311;
+  background-color: #f1f2f6;
   height: 3.5vh;
   width: 5vw;
 }
 
 .asset_confirm_btn {
+  margin-top: 2vh;
+  border: 1px solid black;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #FCA311;
-  width: 20vw;
+  background-color: #f1f2f6;
+  width: 16vw;
   height: 3.5vh;
+}
+
+.asset_confirm_btn:active {
+  background-color: black;
+  color: white;
+}
+
+.buyasset_balance_message {
+  color: #8786d1;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.buyasset_balance_info {
+  font-family: 'Michroma', sans-serif;
+  font-size: 20px;
+}
+
+.asset_operation_total {
+  align-items: center;
+  display: flex;
+  gap: 0.5vw;
+  width: 80%;
+  justify-content: flex-start;
+  margin-left: 2vw;
+  font-size: 16px;
+  width: 100%;
+}
+
+.asset_operation_total_calc {
+  font-family: 'Michroma', sans-serif;
+  font-size: 15px;
+  width: 50%;
+}
+
+.asset_quantity_and_total {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 60%;
 }

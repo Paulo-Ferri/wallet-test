@@ -12,12 +12,16 @@ const Recomendation = () => {
           <p>Veja nossas dicas!</p>
         </div>
       </div>
-      <div className="recomendation_card">
-      <div className="recomendation_card_texts">
-        <p>Como investir dinheiro em ações?</p>
-        <p>Dicas essenciais para iniciantes!</p>
-      </div>
-      </div>
+      <a className="recomendation_card" href="https://blog.xpeducacao.com.br/como-investir-dinheiro-em-acoes/" target="_blank" rel="noreferrer">
+        <div className="recomendation_card_texts">
+          <p>
+            Como investir dinheiro em ações?
+          </p>
+          <p>
+            Dicas essenciais para iniciantes!
+          </p>
+        </div>
+      </a>
     </div>
   );
 };

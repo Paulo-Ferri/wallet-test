@@ -48,7 +48,6 @@
     min-height: 15vh;
     padding-left: 2vw;
     width: 63vw;
-
 }
 
 .assets_table {
@@ -62,7 +61,7 @@
 .buy_assets_button, .sell_assets_button {
     border: 1px solid black;
     background-color: #F1F2F6;
-    border-radius: 0 5px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     height: 5vh;
@@ -98,4 +97,71 @@
     width: 65vw;
     gap: 2vw;
     height: 28vh;
+}
+
+.buy_assets_button:active, .sell_assets_button:active {
+    color: white;
+    background-color: black;
+}
+
+.buy_new_asset_btn {
+    width: 10vw;
+}
+
+.td_btn_new_asset {
+    width: 100%;
+}
+
+.backdrop_title {
+    margin-top: 3vh;
+    color: #8786d1;
+    text-align: center;
+}
+
+@media screen and (max-device-width: 768px) {
+    .recomendation_and_deposit_container {
+        flex-direction: column;
+        width: 90vw;
+        height: 48vh;
+        justify-content: flex-start;
+        gap: 4vh;
+    }
+
+    .user_greetings_wallet {
+        width: 90vw;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .personal_assets_infos {
+        font-size: 16px;
+        padding-left: 2vw;
+        width: 88vw;
+    }
+
+    .assets_table {
+        font-size: 13px;
+    }
+
+    .assets_table > tbody > tr > td {
+        font-size: 12px;
+    }
+
+    .buy_assets_button, .sell_assets_button {
+        border: none;
+        height: 4vh;
+        width: 10vw;
+
+    }
+    .buy_assets_button, .sell_assets_button > img{
+        position: relative;
+        width: 10vw;
+        top: 1.3vh;
+    }
+
+    .td_btn{
+        height: 100%;
+        width: 10vw;
+        padding: 0;
+    }
 }

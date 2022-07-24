@@ -17,21 +17,21 @@ const Balance = () => {
     <div className="balance_component">
       <div className="balance_and_deposit_container">
           {userBalance && (
-          <div>
+          <div className="balance_informative_container">
           <p className="balance_informative">Seu saldo</p>
-          <p> R$ {userBalance.toFixed(2)}</p>
+          <p className="balance_informative_value"> R$ {userBalance.toFixed(2)}</p>
           </div>
           )}
         <div className="deposit_withdraw_btns">
           <button
-            className="balance_btn"
+            className="balance_btn balance_btn_withdraw"
             onClick={() => setIsDepositOpen(true)}
           >
           <img src={arrowIcon} alt="diagonal arrow" />
             Depósito
           </button>
           <button
-            className="balance_btn balance_btn_withdraw"
+            className="balance_btn"
             onClick={() => setIsWithdrawOpen(true)}
           >
             <img src={arrowIcon} alt="diagonal arrow" />

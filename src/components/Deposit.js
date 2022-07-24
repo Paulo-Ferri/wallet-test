@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../context/Context';
-import cartaoIcon from '../images/cartao-icon.png';
-import boletoIcon from '../images/boleto-icon.png';
-import pixIcon from '../images/pix-icon.png';
+import cartaoIcon from '../images/cartao-icon.svg';
+import boletoIcon from '../images/boleto-icon.svg';
+import pixIcon from '../images/pix-icon.svg';
 import { changeUserBalance } from '../utils/apiUtilities';
 import toast, { Toaster } from 'react-hot-toast';
 import './CSS/Deposit.css';
@@ -32,8 +32,10 @@ const Deposit = () => {
   return (
     <div className="deposit_component">
       <Toaster />
-      {userBalance && <p>Seu saldo: R$ {userBalance.toFixed(2)}</p>}
-      <p>Escolha a quantidade para depositar:</p>
+      <div>
+          <p className="buyasset_balance_message">Seu saldo</p>
+          <p className="buyasset_balance_info">R$ {userBalance.toFixed(2)}</p>
+        </div>
       <label className="deposit_withdraw_funds_label">
         <input
           className="deposit_withdraw_funds_input"
@@ -65,7 +67,7 @@ const Deposit = () => {
           onClick={() => setSelectedOption("pix")}
         >
           <p>Pix</p>
-          <img src={pixIcon} alt="pix" />
+          <img className="pix_option" src={pixIcon} alt="pix" />
         </div>
       </div>
       <button

@@ -11,8 +11,8 @@
 
 .withdraw_funds_options_container {
   display: flex;
-  width: 22vw;
-  height: 15vh;
+  width: 23vw;
+  height: 17vh;
   gap: 1vw;
 }
 
@@ -22,16 +22,26 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   border-radius: 5px;
   border: 3px solid #e5e5e5;
   font-size: 17px;
-  width: 100%;
   padding: 0 1vw;
+  width: 4.6vw;
+}
+
+.withdraw_funds_input {
+  background-color: #f1f2f6;
+  border-bottom: 1px solid #76777b;
+  color: black;
+  width: 23vw;
+  font-size: 16px;
+  height: 3.5vh;
+  font-family: 'Michroma', sans-serif;
 }
 
 .withdraw_funds_option > img {
-  width: 3vw;
+  width: 5vw;
 }
 
 .withdraw_options {

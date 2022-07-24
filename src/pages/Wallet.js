@@ -1,9 +1,11 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Dialog} from '@headlessui/react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AppContext from '../context/Context';
 import closeIcon from '../images/close-icon.png';
+import buyIcon from '../images/buy-icon.svg';
+import sellIcon from '../images/sell-icon.svg';
 import './CSS/Wallet.css';
 import './CSS/BuyDialog.css';
 import BuyAsset from '../components/BuyAsset';
@@ -13,6 +15,7 @@ import Recomendation from '../components/Recomendation';
 
 const Wallet = () => {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const {
     setCurrentAsset,
     setOrderType,
@@ -21,6 +24,26 @@ const Wallet = () => {
     userAssets,
     userName,
   } = useContext(AppContext);
+
+  function getWindowDimensions() {
+    const { outerWidth: width, outerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    
+}
+
+    window.addEventListener('resize', handleResize)
+  })
 
   const handleOrder = (asset, type) => {
     setOrderType(type);
@@ -64,7 +87,9 @@ const Wallet = () => {
                       className="buy_assets_button"
                       onClick={() => handleOrder(asset, "compra")}
                     >
-                      Comprar
+                      {windowDimensions.width > 767 ? "Comprar" : 
+                      <img src={buyIcon} alt="wallet with a sign" />
+                      }
                     </button>
                   </td>
                   <td className="td_btn">
@@ -72,7 +97,9 @@ const Wallet = () => {
                       className="sell_assets_button"
                       onClick={() => handleOrder(asset, "venda")}
                     >
-                      Vender
+                      {windowDimensions.width > 767 ? "Vender" : 
+                      <img src={sellIcon} alt="wallet with a sign" />
+                      }
                     </button>
                   </td>
                 </tr>
@@ -89,7 +116,7 @@ const Wallet = () => {
         <div className="new_assets_container">
           <h2 className="personal_assets_h2">Disponíveis para investir</h2>
           <div className="personal_assets_infos">
-          {filteredAssets.length && (
+          {filteredAssets.length ? (
             <table className="assets_table">
               <thead> 
                 <tr>
@@ -105,20 +132,14 @@ const Wallet = () => {
                     <td>{asset.name}</td>
                     <td>{asset.quantity}</td>
                     <td>{asset.value}</td>
-                    <td className="td_btn">
+                    <td className="td_btn td_btn_new_asset">
                       <button
-                        className="buy_assets_button"
+                        className="buy_assets_button buy_new_asset_btn"
                         onClick={() => handleOrder(asset, "compra")}
                       >
-                        Comprar
-                      </button>
-                    </td>
-                    <td className="td_btn">
-                      <button
-                        disabled={true}
-                        className="sell_assets_button"
-                      >
-                        Vender
+                      {windowDimensions.width > 767 ? "Comprar" : 
+                      <img src={buyIcon} alt="wallet with a sign" />
+                      }
                       </button>
                     </td>
                   </tr>
@@ -126,6 +147,10 @@ const Wallet = () => {
                 )})
               }
             </table>
+          ) : (
+            <p className="no_assets_message">
+              Não há nenhum ativo novo até o momento!
+            </p>
           )}
           </div>
         </div>

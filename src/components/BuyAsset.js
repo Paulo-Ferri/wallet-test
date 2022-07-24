@@ -95,24 +95,30 @@ const BuyAsset = () => {
         </tbody>
       </table>
       <div className="asset_order_container">
-        <p>Saldo disponível: R$ {userBalance.toFixed(2)}</p>
-        <label className="asset_quantity">
-          Quantidade: 
-          <input
-            className="asset_input_quantity"
-            type="number"
-            value={desiredAmount}
-            onChange={(e) => setDesiredAmount(e.target.value)}
-          />
-          <button
-            className="asset_btn_quantity"
-            onClick={handleOperation}
-          >
-            OK
-          </button>
-        </label>
+        <div>
+          <p className="buyasset_balance_message">Seu saldo</p>
+          <p className="buyasset_balance_info">R$ {userBalance.toFixed(2)}</p>
+        </div>
+        <div className="asset_quantity_and_total">
+          <label className="asset_quantity">
+            <input
+              className="asset_input_quantity"
+              type="number"
+              value={desiredAmount}
+              placeholder="Quantidade"
+              onChange={(e) => setDesiredAmount(e.target.value)}
+            />
+            <button
+              className="asset_btn_quantity"
+              onClick={handleOperation}
+            >
+              Calcular
+            </button>
+          </label>
         <div className="asset_operation_total">
-          Valor total: R$ {isNaN(total) ? 0 : total}
+          <p>Valor total:</p>
+          <p className="asset_operation_total_calc"> R$ {isNaN(total) ? 0 : total}</p>
+        </div>
         </div>
         <button
           className="asset_confirm_btn"

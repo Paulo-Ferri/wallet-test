@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
 import { changeUserBalance } from '../utils/apiUtilities';
 import { useNavigate } from 'react-router-dom';
-import pixIcon from '../images/pix-icon.png';
-import cartaoIcon from '../images/cartao-icon.png';
+import pixIcon from '../images/pix-icon.svg';
+import cartaoIcon from '../images/cartao-icon.svg';
 import AppContext from '../context/Context';
-import cryptoIcon from '../images/crypto-icon.png';
+import cryptoIcon from '../images/crypto-icon.svg';
 import toast, { Toaster } from 'react-hot-toast';
 import './CSS/Withdraw.css';
 
@@ -18,7 +18,7 @@ const Withdraw = () => {
     const finalBalance = +userBalance - +desiredWithdraw;
     if(finalBalance <= 0) {
       setDesiredWithdraw('');
-      toast.error('Saldo insuficiente!', {
+      return toast.error('Saldo insuficiente!', {
         duration: 3000
       });
     }
@@ -27,9 +27,9 @@ const Withdraw = () => {
       toast.success('Sucesso! Redirecionando para carteira.', {
         duration: 3000
       });
-      setTimeout(() => navigate(0), 3000);
+      return setTimeout(() => navigate(0), 3000);
     } catch {
-      toast.error('Algo deu errado', {
+      return toast.error('Algo deu errado', {
         duration: 3000
       });
     }
@@ -39,7 +39,6 @@ const Withdraw = () => {
     <div className="withdraw_component">
       <Toaster />
       {userBalance && <p>Seu saldo: R$ {userBalance.toFixed(2)}</p>}
-      <p>Escolha a quantidade para sacar:</p>
       <label className="deposit_withdraw_funds_label">
         <input
           className="deposit_withdraw_funds_input"
@@ -79,7 +78,7 @@ const Withdraw = () => {
         {selectedOption === "pix" && 'Informe sua chave Pix:'}
         {selectedOption === "cripto" && 'Informe sua carteira cripto:'}
         <input
-          className="deposit_withdraw_funds_input"
+          className="withdraw_funds_input"
         />
         </label>
         <button
