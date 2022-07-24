@@ -14,6 +14,12 @@
   justify-content: center;
 }
 
+.backdrop_title {
+  margin-top: 3vh;
+  color: #8786d1;
+  text-align: center;
+}
+
 .dialog_container {
   color: #535353;
   position: relative;
@@ -44,6 +50,10 @@
 @media screen and (max-device-width: 768px){
   .backdrop_panel {
     width: 95vw;
-    padding: 2vh 1vw;
   }
+
+  .backdrop_title {
+    margin-left: 3vw;
+  }
+
 }

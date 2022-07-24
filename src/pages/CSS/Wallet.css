@@ -112,12 +112,6 @@
     width: 100%;
 }
 
-.backdrop_title {
-    margin-top: 3vh;
-    color: #8786d1;
-    text-align: center;
-}
-
 @media screen and (max-device-width: 768px) {
     .recomendation_and_deposit_container {
         flex-direction: column;

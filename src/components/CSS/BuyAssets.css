@@ -93,3 +93,23 @@
   gap: 2vh;
   width: 60%;
 }
+
+@media screen and (max-device-width: 768px){
+  .asset_order_container {
+    width: 100%;
+  }
+
+  .asset_input_quantity {
+    width: 35vw;
+  }
+
+  .asset_btn_quantity {
+    width: 15vw;
+  }
+
+  .asset_confirm_btn {
+    width: 50vw;
+    margin-top: 0;
+  }
+
+}

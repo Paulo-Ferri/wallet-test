@@ -7,7 +7,7 @@ import closeIcon from '../images/close-icon.png';
 import buyIcon from '../images/buy-icon.svg';
 import sellIcon from '../images/sell-icon.svg';
 import './CSS/Wallet.css';
-import './CSS/BuyDialog.css';
+import './CSS/Dialog.css';
 import BuyAsset from '../components/BuyAsset';
 import SellAsset from '../components/SellAsset';
 import Deposit from '../components/Balance';
