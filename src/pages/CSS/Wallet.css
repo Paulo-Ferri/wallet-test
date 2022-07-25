@@ -158,4 +158,8 @@
         width: 10vw;
         padding: 0;
     }
+
+    .login_logo > img {
+        height: 8vh;
+    }
 }

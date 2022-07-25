@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import walletIcon from '../images/wallet_icon.png';
+import walletIcon from '../images/wallet-icon.svg';
 import { handleUserCreation } from '../utils/apiUtilities';
 import toast, { Toaster } from 'react-hot-toast';
 import './CSS/Registry.css'

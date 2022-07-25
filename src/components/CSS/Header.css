@@ -42,6 +42,10 @@
 
 @media screen and (max-device-width: 768px) {
   .login_logo_header {
-    width: 50vw;
+    width: 100vw;
+  }
+
+  .login_logo_header > img {
+    height: 7vh;
   }
 }

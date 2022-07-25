@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
-import walletIcon from '../images/wallet_icon.png'
+import walletIcon from '../images/wallet-icon.svg'
 import setLocalStorage from '../utils/localStorageSetItem';
 import {handleLogin} from '../utils/apiUtilities';
 import toast, { Toaster } from 'react-hot-toast';
@@ -37,6 +37,7 @@ const Login = () => {
         setUserEmail(email);
         setLocalStorage("email", email);
         setLocalStorage("userId", loginStatus.data.message.id);
+        setLocalStorage("Date", new Date())
         toast.success('Sucesso! Redirecionando para carteira.', {
           duration: 3000
         });
