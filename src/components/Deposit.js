@@ -16,6 +16,11 @@ const Deposit = () => {
 
   const handleDeposit = async () => {
     const finalBalance = +userBalance + +desiredDeposit;
+    if(finalBalance < 0) {
+      return toast.error('O valor deve ser maior que 0!', {
+        duration: 3000
+      });
+    }
     try {
       await changeUserBalance(finalBalance, userEmail);
       toast.success('Sucesso! Redirecionando para carteira.', {

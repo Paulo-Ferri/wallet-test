@@ -36,6 +36,11 @@ const SellAsset = () => {
     setTotal(desiredTotal.toFixed(2));
   }
   const handleSale = async () => {
+    if(+desiredAmount < 0) {
+      return toast.error('O valor deve ser maior que 0!', {
+        duration: 3000
+      });
+    }
     if (+desiredAmount > UserActive.quantity) {
       return toast.error('Ações insuficientes!', {
         duration: 3000

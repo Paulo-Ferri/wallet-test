@@ -37,6 +37,11 @@ const BuyAsset = () => {
     setTotal(desiredTotal.toFixed(2));
   }
   const handlePurchase = async () => {
+    if(+desiredAmount < 0) {
+      return toast.error('O valor deve ser maior que 0!', {
+        duration: 3000
+      });
+    }
     if (total > userBalance) {
       setDesiredAmount('');
       setTotal(0)
