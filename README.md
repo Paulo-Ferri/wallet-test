@@ -8,7 +8,7 @@
 ### Tomada de decisões
 <p>Primeiramente, decidi pela criação de uma API para garantir a melhor funcionalidade do sistema, aproximando-se ao máximo de uma aplicação real. Dessa forma, é possível a criação de usuários e armazenamento das operações realizadas, ancorados ao banco de dados.</p>
 <p>Além de um visual limpo e característico no desktop, a aplicação conta com responsividade, podendo ser utilizada também no mobile. Essa decisão foi imprescindível diante da realidade do uso da internet pelo brasileiro, com maior aderência ao celular para navegar na rede do que ao próprio computador.</p>
-<p>A aplicação foi desenvolvida em React e o banco de dados utiliza a ORM Sequelize com Node.JS.</p>
+<p>A aplicação foi desenvolvida em React e o Back-End utiliza a ORM Sequelize com Node.JS.</p>
 <p>Para o gerenciamento do estado da aplicação, utilizei o Context API em vez de ferramentas mais robustas, como o Redux, visto que a aplicação se baseia principalmente em chamadas à API, mais do que em movimentações de informações entre a árvore de componentes.</p>
 
 ### Como instalar e executar a aplicação
