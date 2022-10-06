@@ -1,0 +1,20 @@
+Melhorias realizadas:
+  => Mudanças no back end para possibilitar o tratamento de erros pelo front: 
+    - Ao tentar logar com um email ou senha inválidos a mensagem de erro é apresentada corretamente;
+    - Ao tentar registrar um novo usuário com um email já existente é apresentada uma mensagem de erro condizente.
+
+  => Refatoração em funções já existentes:
+	  - Criação da função externa handleFeedback, removendo responsabilidades de outras funções e padronizando o código entre as páginas e os componentes;
+	  - Alteração no gerenciamento do estado, passando de múltiplos estados que tratam sobre informações do usuário (email, senha, nome) para apenas uma só em forma de objeto;
+	  - Mudança na função handleSubmit, removendo responsabilidades indevidas dentro da função, e criando funções para tal (handleUserLogin e handleUserReigistry).
+
+  => Refatoração do CSS para a utilização do pré-processador SASS:
+	  - Realizado nas páginas de login e de registro de usuários;
+
+  => Adequação da nomenclatura de classes para a metodologia BEM:
+	  - Realizado nas páginas de login e de registro de usuários;
+
+  => Organização dos imports na ordem especificada.
+
+  => Modificação da função handleOrder para handleTradingOrder;
+
