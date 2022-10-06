@@ -1,114 +1,124 @@
 import React, { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
-import walletIcon from '../images/wallet-icon.svg';
-import { handleUserCreation } from '../utils/apiUtilities';
-import toast, { Toaster } from 'react-hot-toast';
-import './CSS/Registry.css'
 
-const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+import { handleUserCreation } from '../utils/apiUtilities';
+import handleFeedback from '../utils/handleFeedback';
+
+import walletIcon from '../images/wallet-icon.svg';
+
+import './SCSS/Registry.css'
+// import './CSS/Registry.css'
+
+const Registry = () => {
+  const [userCredentials, setUserCredentials] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const emailValidation = /\S+@\S+\.\S+/;
-    if (!emailValidation.test(email)) {
+    if (!emailValidation.test(userCredentials.email)) {
       return setIsEmailValid(false);
     }
-    if (password.length < 8) {
+    if (userCredentials.password.length < 8) {
       return setIsPasswordValid(false);
     }
-    let registryStatus = '';
+    return handleUserRegistry();
+  }
+
+  const handleUserRegistry = async () => {
     try {
-      registryStatus = await handleUserCreation(email, password, name);
-    } catch {
-      return toast.error('Algo deu errado.', {
-        duration: 3000
-      });
+      const registryStatus = await handleUserCreation(userCredentials);
+      console.log(registryStatus)
+      if (registryStatus.status === 201) {
+        handleFeedback('Conta criada com sucesso! Redirecionando para login.', 'success');
+        return setTimeout(() => navigate('/'), 5000);
       }
-    if (registryStatus === 409) {
-      return toast.error('Esse email já está em uso!', {
-        duration: 3000
-      });
-    }
-    if (registryStatus === 201) {
-      toast.success('Conta criada com sucesso! Redirecionando para login.', {
-        duration: 3000
-      });
-      return setTimeout(() => navigate('/'), 5000);
-    }
+    } catch (error) {
+        handleFeedback('Algo deu errado (400)', 'error');
+      }
+      handleFeedback('Email já cadastrado!', 'error');
   }
 
   return (
-    <div className="register_page">
+    <div className="registry">
       <div><Toaster/></div>
-      <div className="login_logo">
+      <div className="registry__logo">
         <img src={ walletIcon } alt="icon representing a wallet" />
         <h1>XP WALLET</h1>
       </div>
-      <div className="register_container">
+      <div className="registry-container">
         <h1>Dê o primeiro passo rumo à sua independência financeira!</h1>
-        <form className="form_container">
+        <form className="registry__form">
             <label
-              className="label_container"
+              className="registry__label"
               htmlFor="email"
             >
               <input
-                className={!isEmailValid ? "wrong_infos form_input" : "form_input"}
+                className={!isEmailValid ? "registry__input registry__input--wrong-infos" : "registry__input"}
                 type="email"
                 name="email"
                 placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userCredentials.email}
+                onChange={(e) => setUserCredentials({
+                  ...userCredentials,
+                  email: e.target.value
+                })}
               />
             {!isEmailValid && (
                 <p>Você deve informar um e-mail no formato: xp@wallet.com</p>
             )}
             </label>
             <label
-              className="label_container"
+              className="registry__label"
               htmlFor="password"
             >
               <input
-                className={!isPasswordValid ? "wrong_infos form_input" : "form_input"}
+                className={!isPasswordValid ? "registry__input registry__input--wrong-infos" : "registry__input"}
                 type="password"
                 name="password"
                 placeholder="Senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={userCredentials.password}
+                onChange={(e) => setUserCredentials({
+                  ...userCredentials,
+                  password: e.target.value
+                })}
               />
             {!isPasswordValid && (
               <p>Sua senha deve conter mais de oito dígitos!</p>
             )}
             </label>
             <label
-              className="label_container"
+              className="registry__label"
               htmlFor="name"
             >
               <input
-                className="form_input"
+                className="registry__input"
                 type="text"
                 name="name"
                 placeholder="Como você quer ser chamado(a)?"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={userCredentials.name}
+                onChange={(e) => setUserCredentials({
+                  ...userCredentials,
+                  name: e.target.value
+                })}
               />
             </label>
-            <div className="invalid_login_message">
-            </div>
             <button
               type="submit"
-              className="form_button"
+              className="registry__submit-btn"
               onClick={(event) => handleSubmit(event)}
             >
               Registrar
             </button>
             <button
-            className="link_registry_btn"
+            className="registry__login-btn"
             type="button"
             onClick={ () => navigate('/') }
           >
@@ -120,4 +130,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Registry;

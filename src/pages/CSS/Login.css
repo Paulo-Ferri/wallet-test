@@ -1,4 +1,4 @@
-.login_page {
+/* .login_page {
   background-color: #e5e5e5;
   font-size: 20px;
   color: #535353;
@@ -15,9 +15,9 @@
   padding-top: 15vh;
   height: 85vh;
   width: 42vw;
-}
+} */
 
-.form_container {
+/* .form_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,9 +28,9 @@
 .form_container > p {
   height: 5vh;
   width: 100%;
-}
+} */
 
-.label_container {
+/* .label_container {
   margin-bottom: 3vh;
   height: 8vh;
 }
@@ -38,9 +38,9 @@
 .label_container > p {
   font-size: 15px;
   height: 3vh;
-}
+} */
 
-.form_input {
+/* .form_input {
   background-color: #e5e5e5;
   border: none;
   border-bottom: 1px solid #a6a6a6;
@@ -49,7 +49,7 @@
   height: 4vh;
   outline: none;
   width: 100%;
-}
+} */
 
 .invalid_login_message {
   color: red;
@@ -59,7 +59,7 @@
   height: 3vh;
 }
 
-.form_button {
+/* .form_button {
   background-color: #FCA311;
   border-radius: 5px;
   color: #535353;
@@ -68,9 +68,9 @@
   height: 4.5vh;
   margin-bottom: 3vh;
   margin-top: 1.4vh;
-}
+} */
 
-.link_registry_btn {
+/* .link_registry_btn {
   color: #535353;
   cursor: pointer;
   background-color: transparent;
@@ -78,9 +78,9 @@
 
 .link_registry_btn:hover {
   text-decoration: underline;
-}
+} */
 
-.animation_login_container {
+/* .animation_login_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,9 +93,9 @@
   pointer-events: none;
   width: 100%;
   height: 75%;
-}
+} */
 
-.login_logo {
+/* .login_logo {
   inset: 0;
   position: absolute;
   padding: 1vh 0 0 1vw;
@@ -112,16 +112,16 @@
 
 .login_logo > h1 {
   font-size: 25px;
-}
+} */
 
-.wrong_infos {
+/* .wrong_infos {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   border-bottom: 1px solid red;
-}
+} */
 
 
 
-@keyframes shake {
+/* @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
   }
@@ -137,7 +137,7 @@
   40%, 60% {
     transform: translate3d(4px, 0, 0);
   }
-}
+} */
 
 @media screen and ( max-width : 798px ) {
   .login_page {

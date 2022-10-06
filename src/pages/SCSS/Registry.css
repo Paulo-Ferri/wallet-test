@@ -1,0 +1,90 @@
+.registry {
+  align-items: center;
+  background-color: #e5e5e5;
+  color: #535353;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.registry__logo {
+  inset: 0;
+  position: absolute;
+  padding: 1vh 0 0 1vw;
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  height: 10vh;
+  width: 20vw;
+}
+.registry__logo > img {
+  height: 7vh;
+}
+.registry__logo > h1 {
+  font-size: 25px;
+}
+.registry-container {
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 35vw;
+  gap: 6.4vh;
+}
+.registry-container > h1 {
+  height: 10vh;
+}
+.registry__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  width: 100%;
+}
+.registry__form > p {
+  height: 5vh;
+  width: 100%;
+}
+.registry__label {
+  margin-bottom: 3vh;
+  height: 8vh;
+}
+.registry__label > p {
+  font-size: 15px;
+  height: 3vh;
+}
+.registry__input {
+  background-color: #e5e5e5;
+  border: none;
+  border-bottom: 1px solid #a6a6a6;
+  color: #535353;
+  font-size: 16px;
+  height: 4vh;
+  outline: none;
+  width: 100%;
+}
+.registry__input--wrong-infos {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-bottom: 1px solid red;
+}
+.registry__submit-btn {
+  background-color: #FCA311;
+  border-radius: 5px;
+  color: #535353;
+  cursor: pointer;
+  font-size: 16px;
+  height: 4.5vh;
+  margin-bottom: 3vh;
+  margin-top: 1.4vh;
+}
+.registry__login-btn {
+  color: #535353;
+  cursor: pointer;
+  background-color: transparent;
+}
+.registry__login-btn:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=Registry.css.map */

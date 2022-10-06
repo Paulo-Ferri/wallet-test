@@ -1,17 +1,22 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {Dialog} from '@headlessui/react';
+
+import AppContext from '../context/Context';
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import AppContext from '../context/Context';
-import closeIcon from '../images/close-icon.png';
-import buyIcon from '../images/buy-icon.svg';
-import sellIcon from '../images/sell-icon.svg';
-import './CSS/Wallet.css';
-import './CSS/Dialog.css';
 import BuyAsset from '../components/BuyAsset';
 import SellAsset from '../components/SellAsset';
 import Deposit from '../components/Balance';
 import Recomendation from '../components/Recomendation';
+
+import closeIcon from '../images/close-icon.png';
+import buyIcon from '../images/buy-icon.svg';
+import sellIcon from '../images/sell-icon.svg';
+
+
+import './CSS/Wallet.css';
+import './CSS/Dialog.css';
 
 const Wallet = () => {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
@@ -25,7 +30,7 @@ const Wallet = () => {
     userName,
   } = useContext(AppContext);
 
-  function getWindowDimensions() {
+  const getWindowDimensions = () => {
     const { outerWidth: width, outerHeight: height } = window;
     return {
       width,
@@ -45,7 +50,7 @@ const Wallet = () => {
     window.addEventListener('resize', handleResize)
   })
 
-  const handleOrder = (asset, type) => {
+  const handleTradingOrder = (asset, type) => {
     setOrderType(type);
     setCurrentAsset(asset);
     setIsOrderOpen(true);
@@ -85,7 +90,7 @@ const Wallet = () => {
                   <td className="td_btn">
                     <button
                       className="buy_assets_button"
-                      onClick={() => handleOrder(asset, "compra")}
+                      onClick={() => handleTradingOrder(asset, "compra")}
                     >
                       {windowDimensions.width > 767 ? "Comprar" : 
                       <img src={buyIcon} alt="wallet with a sign" />
@@ -95,7 +100,7 @@ const Wallet = () => {
                   <td className="td_btn">
                     <button
                       className="sell_assets_button"
-                      onClick={() => handleOrder(asset, "venda")}
+                      onClick={() => handleTradingOrder(asset, "venda")}
                     >
                       {windowDimensions.width > 767 ? "Vender" : 
                       <img src={sellIcon} alt="wallet with a sign" />
@@ -135,7 +140,7 @@ const Wallet = () => {
                     <td className="td_btn td_btn_new_asset">
                       <button
                         className="buy_assets_button buy_new_asset_btn"
-                        onClick={() => handleOrder(asset, "compra")}
+                        onClick={() => handleTradingOrder(asset, "compra")}
                       >
                       {windowDimensions.width > 767 ? "Comprar" : 
                       <img src={buyIcon} alt="wallet with a sign" />

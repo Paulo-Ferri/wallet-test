@@ -1,27 +1,33 @@
 import axios from 'axios';
 
-
-const handleLogin = async (email, password) => {
- const response = await axios.post('https://pauloferrixpwallet.herokuapp.com/login', {
+const sendLogin = async (credentials) => {
+  const {email, password} = credentials;
+  const response = await axios.post('https://pauloferrixpwallet.herokuapp.com/login', {
     email: email,
     password: password
   }).catch((error) => {
+    if (error.response.status === 401) {
+      return 'Invalid Data'
+    }
     throw new Error(error)
   });
-  console.log(response)
   return response
 }
 
-const handleUserCreation = async (email, password, name) => {
+const handleUserCreation = async (credentials) => {
+  const {name, email, password} = credentials;
   const response = await axios.post('https://pauloferrixpwallet.herokuapp.com/users', {
     email: email,
     password: password,
     balance: "0",
     name: name
   }).catch((error) => {
+    if (error.response.status === 409) {
+      return 'Conflict'
+    }
     throw new Error(error)
   });
-  return response.status ? response.status : response.response.status
+  return response
 }
 
 const getAssetsByEmail = async (email) => {
@@ -98,7 +104,7 @@ const deleteUserAsset = async (userId, activeId) => {
 }
 
 export {
-  handleLogin,
+  sendLogin,
   handleUserCreation,
   getAssetsByEmail,
   getAllAssets,
